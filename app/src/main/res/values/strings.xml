@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Yummy recipes</string>
+    <string name="title_activity_recipes_list">RecipesListActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
