@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import java.util.List;
 
@@ -18,11 +19,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    private List<Recipe> recipes;
+    private ListView list;
+    private MainActivity currentActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn=(Button)findViewById(R.id.button_click);
+        /*Button btn=(Button)findViewById(R.id.button_click);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,32 +37,51 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+*/
+
 
         // Test fetching recipes
         Retrofit mRetrofit = new Retrofit.Builder()
-                .baseUrl("https://yummly2.p.rapidapi.com/")
+                .baseUrl("https://tasty.p.rapidapi.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         YummlyApi test = mRetrofit.create(YummlyApi.class);
 
-        Call<Feed> call = test.getFeeds();
+        Call<Recipes> call = test.getRecipes();
 
-        call.enqueue(new Callback<Feed>() {
+        call.enqueue(new Callback<Recipes>() {
             @Override
-            public void onResponse(Call<Feed> call, Response<Feed> response) {
+            public void onResponse(Call<Recipes> call, Response<Recipes> response) {
                 Log.i("FetchOrSuccess", String.valueOf(response.code()));
-                Feed feed = response.body();
-                List<Recipe> recipes = feed.getFeed();
-                for(Recipe recipe : recipes){
-                    Log.i("type", recipe.getType());
+                Recipes recipes = response.body();
+                Log.i("enter1", recipes.toString());
+
+                List<Recipe> recipes_list = recipes.getResults();
+                Log.i("enter2", recipes_list.toString());
+
+                for(Recipe recipe : recipes_list){
+                    Log.i("nameDebug", recipe.getName());
                 }
+
+
+                list = (ListView)findViewById(R.id.list);
+                Log.i("list", list.toString());
+
+
+                RecipeListAdapter adapter = new RecipeListAdapter(MainActivity.this, recipes_list);
+                Log.i("MAinA", MainActivity.this.toString());
+                list.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<Feed> call, Throwable t) {
+            public void onFailure(Call<Recipes> call, Throwable t) {
                 Log.e("FetchOrSuccess", t.getMessage());
 
             }
         });
+
+
+
+
     }
 }

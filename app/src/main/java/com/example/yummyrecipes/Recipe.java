@@ -1,39 +1,40 @@
 package com.example.yummyrecipes;
 
 public class Recipe {
-    private String displayName,flag,type;
-    private String[] images;
+    private String id;
+    private String thumbnail_url;
+    private String name;
+    private String description;
 
-    public String getDisplayName() {
-        return displayName;
+    public String getId() {
+        return id;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getFlag() {
-        return flag;
+    public String getThumbnail_url() {
+        return thumbnail_url;
     }
 
-    public void setFlag(String flag) {
-        this.flag = flag;
+    public void setThumbnail_url(String thumbnail_url) {
+        this.thumbnail_url = thumbnail_url;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String[] getImages() {
-        return images;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImages(String[] images) {
-        this.images = images;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
 }

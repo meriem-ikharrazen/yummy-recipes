@@ -9,7 +9,7 @@ import retrofit2.http.Headers;
 public interface YummlyApi {
     @Headers({
             "X-RapidAPI-Key: 951377563bmsh3415018cc725eecp1ba701jsna76ddd49ffc0",
-            "X-RapidAPI-Host: yummly2.p.rapidapi.com"
+            "X-RapidAPI-Host: tasty.p.rapidapi.com"
             })
-    @GET("feeds/list?limit=24&start=0")
-    Call<Feed> getFeeds();}
+    @GET("recipes/list?from=0&size=20")
+    Call<Recipes> getRecipes();}

@@ -5,9 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yummyrecipes.MainActivity">
-    <Button
+    <!--<Button
         android:id="@+id/button_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click" />
+        -->
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
