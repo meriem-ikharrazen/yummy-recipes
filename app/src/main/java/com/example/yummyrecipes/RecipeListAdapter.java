@@ -67,6 +67,9 @@ public class RecipeListAdapter extends ArrayAdapter<Recipe> {
 
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("id",recipes.get(position).getId());
+                    intent.putExtra("description",recipes.get(position).getDescription());
+                    intent.putExtra("name",recipes.get(position).getName());
+                    intent.putExtra("image",recipes.get(position).getThumbnail_url());
                     context.startActivity(intent);
                 }
             });

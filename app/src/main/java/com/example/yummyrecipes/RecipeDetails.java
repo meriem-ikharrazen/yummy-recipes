@@ -3,10 +3,15 @@ package com.example.yummyrecipes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.net.URL;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,7 +28,28 @@ public class RecipeDetails extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_details);
         Intent intent=getIntent();
         int id= Integer.parseInt(intent.getStringExtra("id"));
-        Log.i("Get Id",id+"");
+        String name=intent.getStringExtra("name");
+        String description=intent.getStringExtra("description");
+        String image=intent.getStringExtra("image");
+
+        TextView nameTextView = (TextView) findViewById(R.id.name);
+        TextView descriptionTextView = (TextView) findViewById(R.id.description);
+        ImageView thumbnail_url = (ImageView) findViewById(R.id.image);
+
+        nameTextView.setText(name);
+        descriptionTextView.setText(description);
+
+        new DownloadImageTask(thumbnail_url)
+                .execute(image);
+        try {
+            URL newurl = new URL(image);
+            Bitmap mIcon_val = null;
+            mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+            thumbnail_url.setImageBitmap(mIcon_val);
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
 
         // Test fetching recipes
         Retrofit mRetrofit = new Retrofit.Builder()
@@ -41,7 +67,6 @@ public class RecipeDetails extends AppCompatActivity {
                 RecipeGetMoreInfo infos = response.body();
                 Log.i("GetInfo", infos.getOriginal_video_url());
                 Log.i("Instructions", infos.getInstructions().get(0).getDisplay_text());
-
             }
 
             @Override
