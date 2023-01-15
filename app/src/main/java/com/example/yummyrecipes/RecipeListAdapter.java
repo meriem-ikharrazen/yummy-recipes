@@ -1,6 +1,7 @@
 package com.example.yummyrecipes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +31,7 @@ public class RecipeListAdapter extends ArrayAdapter<Recipe> {
         this.context = context;
         this.recipes = recipes;
     }
+
 
     @NonNull
     @Override
@@ -52,6 +55,21 @@ public class RecipeListAdapter extends ArrayAdapter<Recipe> {
             } catch (Exception e) {
                 e.getMessage();
             }
+
+
+            image.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Log.i("Test Show details","test");
+                    Intent intent = new Intent(context,RecipeDetails.class);
+
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("id",recipes.get(position).getId());
+                    context.startActivity(intent);
+                }
+            });
 
         }
 
