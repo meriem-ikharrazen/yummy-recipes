@@ -31,7 +31,7 @@ public class RecipeListAdapter extends ArrayAdapter<Recipe> {
         this.context = context;
         this.recipes = recipes;
     }
-
+    
 
     @NonNull
     @Override

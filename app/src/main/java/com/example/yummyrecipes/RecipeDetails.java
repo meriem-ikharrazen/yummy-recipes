@@ -1,17 +1,20 @@
 package com.example.yummyrecipes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,6 +37,7 @@ public class RecipeDetails extends AppCompatActivity {
 
         TextView nameTextView = (TextView) findViewById(R.id.name);
         TextView descriptionTextView = (TextView) findViewById(R.id.description);
+        TextView instructionTextView = (TextView) findViewById(R.id.instruction);
         ImageView thumbnail_url = (ImageView) findViewById(R.id.image);
 
         nameTextView.setText(name);
@@ -67,6 +71,18 @@ public class RecipeDetails extends AppCompatActivity {
                 RecipeGetMoreInfo infos = response.body();
                 Log.i("GetInfo", infos.getOriginal_video_url());
                 Log.i("Instructions", infos.getInstructions().get(0).getDisplay_text());
+                //L'ajout de l'adapter pour les instructions
+                List<String> instructions = new ArrayList<>();
+                int taille=infos.getInstructions().size();
+                Log.i("taille instruct",taille+"");
+                for (int i=0;i<taille;i++){
+                    instructions.add(infos.getInstructions().get(i).getDisplay_text());
+                }
+                Log.i("test instructions",instructions.get(0));
+
+                InstructionListAdapter adapter = new InstructionListAdapter(getApplicationContext(), instructions);
+                ListView listView=findViewById(R.id.instructions);
+                listView.setAdapter(adapter);
             }
 
             @Override
@@ -76,5 +92,8 @@ public class RecipeDetails extends AppCompatActivity {
             }
         });
 
+
+
     }
+
 }
