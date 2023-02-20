@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DesignSurface">
-    <option name="filePathToZoomLevelMap">
-      <map>
-        <entry key="..\:/USER/EILCO/ING3/Développement mobile/Développement mobile/Projet/yummy-recipes/app/src/main/res/layout/activity_main.xml" value="0.14895833333333333" />
-        <entry key="..\:/USER/EILCO/ING3/Développement mobile/Développement mobile/Projet/yummy-recipes/app/src/main/res/layout/activity_recipes_list.xml" value="0.14666666666666667" />
-        <entry key="..\:/USER/EILCO/ING3/Développement mobile/Développement mobile/Projet/yummy-recipes/app/src/main/res/layout/activity_recipeslist.xml" value="0.2114047287899861" />
-        <entry key="..\:/USER/EILCO/ING3/Développement mobile/Développement mobile/Projet/yummy-recipes/app/src/main/res/layout/recipe_item.xml" value="0.1" />
-        <entry key="..\:/USER/EILCO/ING3/Développement mobile/Développement mobile/Projet/yummy-recipes/app/src/main/res/layout/recipes_list.xml" value="0.1" />
-        <entry key="..\:/USER/EILCO/ING3/Développement mobile/Développement mobile/Projet/yummyRecipes/app/src/main/res/layout/activity_main.xml" value="0.1" />
-      </map>
-    </option>
-  </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="19" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

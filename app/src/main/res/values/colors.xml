@@ -12,4 +12,11 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+
+    <!-- App colors -->
+    <color name="vert1"> #6D9773</color>
+    <color name="vert2"> #0C3B2E</color>
+    <color name="marron"> #BB8A52</color>
+    <color name="jaune"> #FFBA00</color>
+
 </resources>

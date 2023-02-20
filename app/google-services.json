@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "559805118138",
+    "project_id": "yummy-recipes-eilco",
+    "storage_bucket": "yummy-recipes-eilco.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559805118138:android:36b1f1acfc37ccf7487483",
+        "android_client_info": {
+          "package_name": "com.example.yummyrecipes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559805118138-pqqk5nua8g5vnfuhg2a687kfuilr7h0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpwynndk7ve3rEDl5vpkLEA3ck3Be5dvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559805118138-pqqk5nua8g5vnfuhg2a687kfuilr7h0j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
