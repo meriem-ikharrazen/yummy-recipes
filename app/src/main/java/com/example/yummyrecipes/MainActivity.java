@@ -44,11 +44,13 @@ public class MainActivity extends AppCompatActivity {
         });
 */
 
-// Write a message to the database
-        DatabaseReference myRef1 = FirebaseDatabase.getInstance().getReference(); //Getting root reference
-        DatabaseReference myRef = myRef1.child("users"); //Write your child reference if any
+        // ******* ADD USER TO DATABASE ***********
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference(); //Getting root reference
+        User user = new User("meryam@meryem","password","meryam soussi" );
+        DatabaseReference usersRef = myRef.child("users/"+user.getEmail()); //Write your child reference if any
         Log.i("firebase", myRef.toString());
-        myRef1.setValue("Hello, World!");
+        usersRef.setValue(user);
+
 
         // Test fetching recipes
         Retrofit mRetrofit = new Retrofit.Builder()
