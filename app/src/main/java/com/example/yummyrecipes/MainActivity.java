@@ -33,25 +33,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*Button btn=(Button)findViewById(R.id.button_click);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent i=new Intent(getApplicationContext(),RecipesListActivity.class);
-                startActivity(i);
-            }
-        });
-*/
-
-        // ******* ADD USER TO DATABASE ***********
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference(); //Getting root reference
-        User user = new User("meryam@meryem","password","meryam soussi" );
-        DatabaseReference usersRef = myRef.child("users/"+user.getEmail()); //Write your child reference if any
-        Log.i("firebase", myRef.toString());
-        usersRef.setValue(user);
 
 
+        //Uncommit this to access create account
+        /*Intent intent = new Intent(MainActivity.this,CreateAccount.class);
+        MainActivity.this.startActivity(intent);*/
+
+        //Create new Activity for the rest of code (For all recipes list)
         // Test fetching recipes
         Retrofit mRetrofit = new Retrofit.Builder()
                 .baseUrl("https://tasty.p.rapidapi.com/")
