@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -41,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         });
 */
 
+// Write a message to the database
+        DatabaseReference myRef1 = FirebaseDatabase.getInstance().getReference(); //Getting root reference
+        DatabaseReference myRef = myRef1.child("users"); //Write your child reference if any
+        Log.i("firebase", myRef.toString());
+        myRef1.setValue("Hello, World!");
 
         // Test fetching recipes
         Retrofit mRetrofit = new Retrofit.Builder()
