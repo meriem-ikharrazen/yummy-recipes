@@ -53,7 +53,8 @@ public class FavoriteListAdapter extends ArrayAdapter<Favoris>  {
                 e.getMessage();
             }
 
-
+            //ne fonctionne pas 
+/*
             image.setOnClickListener(new View.OnClickListener()
             {
                 @Override
@@ -69,7 +70,7 @@ public class FavoriteListAdapter extends ArrayAdapter<Favoris>  {
                     intent.putExtra("image",favoris.get(position).getImage());
                     context.startActivity(intent);
                 }
-            });
+            });*/
 
         }
 

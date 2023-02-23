@@ -26,8 +26,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FavoritesActivity extends AppCompatActivity {
-
-    private List<Recipe> recipes;
+    private List<Favoris> listeFavoris;
     private ListView list;
     private MainActivity currentActivity;
 
@@ -42,7 +41,7 @@ public class FavoritesActivity extends AppCompatActivity {
         //Get id des recettes
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference favoriteRef = myRef.child("favorites/"+connectedUser.getEmail());
-        List<Favoris> listeFavoris=new ArrayList<>();
+        listeFavoris=new ArrayList<>();
 
         favoriteRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
