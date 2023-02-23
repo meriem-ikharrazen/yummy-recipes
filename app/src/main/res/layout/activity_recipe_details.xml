@@ -57,6 +57,12 @@
             android:dividerHeight="1dp"
             android:footerDividersEnabled="false" />
 
+        <ImageButton
+            android:id="@+id/addToFavorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/heart"
+            android:contentDescription="Add to favorites"/>
 
     </LinearLayout>
     </ScrollView>

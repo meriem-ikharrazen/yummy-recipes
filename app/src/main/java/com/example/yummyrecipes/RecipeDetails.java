@@ -10,14 +10,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,8 +47,8 @@ public class RecipeDetails extends AppCompatActivity {
 
         TextView nameTextView = (TextView) findViewById(R.id.name);
         TextView descriptionTextView = (TextView) findViewById(R.id.description);
-        TextView instructionTextView = (TextView) findViewById(R.id.instruction);
         ImageView thumbnail_url = (ImageView) findViewById(R.id.image);
+        ImageButton addToFavorites=findViewById(R.id.addToFavorites);
 
         nameTextView.setText(name);
         descriptionTextView.setText(description);
@@ -88,6 +96,7 @@ public class RecipeDetails extends AppCompatActivity {
                 setListViewHeight(listView);
             }
 
+
             @Override
             public void onFailure(Call<RecipeGetMoreInfo> call, Throwable t) {
                 Log.e("FetchOrSuccess", t.getMessage());
@@ -95,7 +104,20 @@ public class RecipeDetails extends AppCompatActivity {
             }
         });
 
-
+        //Ajouter au favoris
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
+        addToFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("Here : add to favorites","favorites");
+                User connectedUser=UserSession.getInstance().getUser();
+                DatabaseReference usersRef = myRef.child("favorites/"+connectedUser.getEmail()); //Write your child reference if any
+                Map<String, Object> newFavorite = new HashMap<>();
+                newFavorite.put(random(), String.valueOf(id));
+                usersRef.updateChildren(newFavorite);
+                Toast.makeText(RecipeDetails.this, "this recipe is successfully added to your favorites", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -118,6 +140,18 @@ public class RecipeDetails extends AppCompatActivity {
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
+    }
+
+    public String random() {
+        Random generator = new Random();
+        StringBuilder randomStringBuilder = new StringBuilder();
+        int randomLength = generator.nextInt(5);
+        char tempChar;
+        for (int i = 0; i < randomLength; i++){
+            tempChar = (char) (generator.nextInt(96) + 32);
+            randomStringBuilder.append(tempChar);
+        }
+        return randomStringBuilder.toString();
     }
 
 }

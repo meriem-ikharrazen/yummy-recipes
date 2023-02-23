@@ -5,12 +5,9 @@ import java.util.List;
 
 public class UserSession {
     private static UserSession instance;
-    // Pour pour stocker une liste d'utilisateurs connectés au lieu d'un singleton
-    private List<User> users;
+    private User user;
 
-    private UserSession() {
-        users = new ArrayList<>();
-    }
+    private UserSession() {}
 
     public static synchronized UserSession getInstance() {
         if (instance == null) {
@@ -19,15 +16,11 @@ public class UserSession {
         return instance;
     }
 
-    public void addUser(User user) {
-        users.add(user);
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void removeUser(User user) {
-        users.remove(user);
-    }
-
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 }

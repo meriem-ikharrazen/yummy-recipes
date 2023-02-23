@@ -20,6 +20,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 public class LogInActiviy extends AppCompatActivity {
 
 
@@ -52,13 +54,12 @@ public class LogInActiviy extends AppCompatActivity {
                         String fullname = snapshot.child("fullname").getValue(String.class);
                         String userEmail = snapshot.child("email").getValue(String.class);
                         String userPassword = snapshot.child("password").getValue(String.class);
-
                         if (userPassword.equals(password.getText().toString())) {
                             Log.i("Success Connection", "Log In");
                             User connectedUser=new User(userEmail,userPassword,fullname);
 
                             //Mettre l'utilisateur connecté dans une session
-                            UserSession.getInstance().addUser(connectedUser);
+                            UserSession.getInstance().setUser(connectedUser);
 
                             // Navigate to recipes list main to show all recipes
                             Intent intent = new Intent(LogInActiviy.this, RecipesMainListActivity.class);

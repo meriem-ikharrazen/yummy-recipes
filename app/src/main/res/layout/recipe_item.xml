@@ -5,25 +5,23 @@ android:layout_height="wrap_content"
     android:orientation="vertical">
 
 <ImageView
-    android:contentDescription="row"
     android:id="@+id/image"
+    android:contentDescription="row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="6dp"
     android:layout_marginRight="6dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp">
+    >
 </ImageView>
 
-<TextView
-    android:id="@+id/infoTextViewID"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp"
-    android:layout_marginLeft="10dp"
-    android:text="text"
-    android:textSize="26sp" >
-</TextView>
+    <TextView
+        android:id="@+id/infoTextViewID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="text"
+        android:textSize="26sp" >
+    </TextView>
 
 </LinearLayout>

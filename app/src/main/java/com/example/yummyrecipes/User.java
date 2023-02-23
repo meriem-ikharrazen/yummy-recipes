@@ -1,10 +1,13 @@
 package com.example.yummyrecipes;
 
+import java.util.List;
+
 public class User {
 
     private String email;
     private String password;
     private String fullname;
+
 
     public User(String email, String password, String fullname) {
         this.email = email;
@@ -38,4 +41,5 @@ public class User {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
+
 }
