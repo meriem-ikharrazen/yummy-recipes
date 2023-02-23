@@ -2,8 +2,11 @@ package com.example.yummyrecipes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.util.List;
@@ -65,10 +68,28 @@ public class RecipesListActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.listeFavoris:
+                Intent intentFavoris = new Intent(this, FavoritesActivity.class);
+                startActivity(intentFavoris);
+                return true;
+            case R.id.listeRecipes:
+                Intent intentrecipes = new Intent(this, RecipesMainListActivity.class);
+                startActivity(intentrecipes);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

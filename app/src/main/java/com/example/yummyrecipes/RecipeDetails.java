@@ -113,11 +113,13 @@ public class RecipeDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("Here : add to favorites","favorites");
                 User connectedUser=UserSession.getInstance().getUser();
-                DatabaseReference usersRef = myRef.child("favorites/"+connectedUser.getEmail()); //Write your child reference if any
+                DatabaseReference usersRef = myRef.child("favorites/"+connectedUser.getEmail()).child(String.valueOf(id)); //Write your child reference if any
                 Map<String, Object> newFavorite = new HashMap<>();
-                newFavorite.put(random(), String.valueOf(id));
+                newFavorite.put("name", name);
+                newFavorite.put("image", image);
+                newFavorite.put("description", description);
                 usersRef.updateChildren(newFavorite);
-                Toast.makeText(RecipeDetails.this, "this recipe is successfully added to your favorites", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RecipeDetails.this, "This recipe is successfully added to your favorites", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -132,8 +134,13 @@ public class RecipeDetails extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_item:
-                Toast.makeText(this, "Menu Item clicked", Toast.LENGTH_SHORT).show();
+            case R.id.listeFavoris:
+                Intent intentFavoris = new Intent(this, FavoritesActivity.class);
+                startActivity(intentFavoris);
+                return true;
+            case R.id.listeRecipes:
+                Intent intentrecipes = new Intent(this, RecipesMainListActivity.class);
+                startActivity(intentrecipes);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
