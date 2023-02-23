@@ -1,6 +1,7 @@
-package com.example.yummyrecipes;
+package com.example.yummyrecipes.Service;
 
-import java.util.List;
+import com.example.yummyrecipes.Model.RecipeGetMoreInfo;
+import com.example.yummyrecipes.Model.Recipes;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -15,41 +15,41 @@
         android:theme="@style/Theme.YummyRecipes"
         tools:targetApi="31">
         <activity
-            android:name=".FavoritesActivity"
+            android:name=".Controller.RecipeDetails"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RecipesMainListActivity"
+            android:name=".Controller.FavoritesActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LogInActiviy"
+            android:name=".Controller.RecipesMainListActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateAccount"
+            android:name=".Controller.LogInActiviy"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Controller.CreateAccount"
             android:exported="false" />
         <activity
-            android:name=".RecipeDetails"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".RecipesListActivity"
+            android:name=".Controller.RecipesListActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Controller.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

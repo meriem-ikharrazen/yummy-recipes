@@ -1,7 +1,6 @@
-package com.example.yummyrecipes;
+package com.example.yummyrecipes.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,6 +18,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yummyrecipes.Model.RecipeGetMoreInfo;
+import com.example.yummyrecipes.Model.User;
+import com.example.yummyrecipes.Model.UserSession;
+import com.example.yummyrecipes.R;
+import com.example.yummyrecipes.Service.DownloadImageTask;
+import com.example.yummyrecipes.Service.InstructionListAdapter;
+import com.example.yummyrecipes.Service.YummlyApi;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,7 +33,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -112,7 +117,7 @@ public class RecipeDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("Here : add to favorites","favorites");
-                User connectedUser=UserSession.getInstance().getUser();
+                User connectedUser= UserSession.getInstance().getUser();
                 DatabaseReference usersRef = myRef.child("favorites/"+connectedUser.getEmail()).child(String.valueOf(id)); //Write your child reference if any
                 Map<String, Object> newFavorite = new HashMap<>();
                 newFavorite.put("name", name);
@@ -166,18 +171,6 @@ public class RecipeDetails extends AppCompatActivity {
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
-    }
-
-    public String random() {
-        Random generator = new Random();
-        StringBuilder randomStringBuilder = new StringBuilder();
-        int randomLength = generator.nextInt(5);
-        char tempChar;
-        for (int i = 0; i < randomLength; i++){
-            tempChar = (char) (generator.nextInt(96) + 32);
-            randomStringBuilder.append(tempChar);
-        }
-        return randomStringBuilder.toString();
     }
 
 }

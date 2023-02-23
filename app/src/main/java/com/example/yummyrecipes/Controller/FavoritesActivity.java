@@ -1,4 +1,4 @@
-package com.example.yummyrecipes;
+package com.example.yummyrecipes.Controller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.example.yummyrecipes.Service.FavoriteListAdapter;
+import com.example.yummyrecipes.Model.Favoris;
+import com.example.yummyrecipes.Model.User;
+import com.example.yummyrecipes.Model.UserSession;
+import com.example.yummyrecipes.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,12 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FavoritesActivity extends AppCompatActivity {
     private List<Favoris> listeFavoris;
@@ -36,7 +35,7 @@ public class FavoritesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorites);
 
         //get user connecté
-        User connectedUser=UserSession.getInstance().getUser();
+        User connectedUser= UserSession.getInstance().getUser();
 
         //Get id des recettes
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();

@@ -1,4 +1,4 @@
-package com.example.yummyrecipes;
+package com.example.yummyrecipes.Model;
 
 public class Recipe {
     private String id;

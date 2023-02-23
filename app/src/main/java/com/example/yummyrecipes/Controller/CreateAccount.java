@@ -1,4 +1,4 @@
-package com.example.yummyrecipes;
+package com.example.yummyrecipes.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.yummyrecipes.Model.User;
+import com.example.yummyrecipes.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

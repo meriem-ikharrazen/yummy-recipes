@@ -1,7 +1,4 @@
-package com.example.yummyrecipes;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.example.yummyrecipes.Model;
 
 public class UserSession {
     private static UserSession instance;

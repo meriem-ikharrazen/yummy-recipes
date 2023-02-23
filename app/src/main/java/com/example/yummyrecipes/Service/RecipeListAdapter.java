@@ -1,4 +1,4 @@
-package com.example.yummyrecipes;
+package com.example.yummyrecipes.Service;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,20 +15,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.yummyrecipes.Controller.RecipeDetails;
+import com.example.yummyrecipes.Model.Recipe;
+import com.example.yummyrecipes.R;
+
 import java.net.URL;
 import java.util.List;
 
-public class FavoriteListAdapter extends ArrayAdapter<Favoris>  {
-
-    List<Favoris> favoris;
+public class RecipeListAdapter extends ArrayAdapter<Recipe> {
+    List<Recipe> recipes;
     Context context;
 
-    public FavoriteListAdapter(Context context,List<Favoris> favoris) {
-        super(context, 0, favoris);
+    public RecipeListAdapter(Context context,List<Recipe> recipes) {
+        super(context, 0, recipes);
         this.context = context;
-        this.favoris = favoris;
+        this.recipes = recipes;
     }
-
+    
 
     @NonNull
     @Override
@@ -40,11 +43,11 @@ public class FavoriteListAdapter extends ArrayAdapter<Favoris>  {
             TextView text = (TextView) convertView.findViewById(R.id.infoTextViewID);
             ImageView image = (ImageView) convertView.findViewById(R.id.image);
 
-            text.setText(favoris.get(position).getName());
+            text.setText(recipes.get(position).getName());
             new DownloadImageTask(image)
-                    .execute(favoris.get(position).getImage());
+                    .execute(recipes.get(position).getThumbnail_url());
             try {
-                URL newurl = new URL(favoris.get(position).getImage());
+                URL newurl = new URL(recipes.get(position).getThumbnail_url());
                 Bitmap mIcon_val = null;
                 mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
                 image.setImageBitmap(mIcon_val);
@@ -53,27 +56,27 @@ public class FavoriteListAdapter extends ArrayAdapter<Favoris>  {
                 e.getMessage();
             }
 
-            //ne fonctionne pas 
-/*
+
             image.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
                     Log.i("Test Show details","test");
-                    Intent intent = new Intent(context,RecipeDetails.class);
+                    Intent intent = new Intent(context, RecipeDetails.class);
 
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("id",favoris.get(position).getId());
-                    intent.putExtra("description",favoris.get(position).getDescription());
-                    intent.putExtra("name",favoris.get(position).getName());
-                    intent.putExtra("image",favoris.get(position).getImage());
+                    intent.putExtra("id",recipes.get(position).getId());
+                    intent.putExtra("description",recipes.get(position).getDescription());
+                    intent.putExtra("name",recipes.get(position).getName());
+                    intent.putExtra("image",recipes.get(position).getThumbnail_url());
                     context.startActivity(intent);
                 }
-            });*/
+            });
 
         }
 
         return convertView;
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.yummyrecipes;
+package com.example.yummyrecipes.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.example.yummyrecipes.Model.Recipe;
+import com.example.yummyrecipes.Model.Recipes;
+import com.example.yummyrecipes.R;
+import com.example.yummyrecipes.Service.RecipeListAdapter;
+import com.example.yummyrecipes.Service.YummlyApi;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,16 +23,20 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RecipesMainListActivity extends AppCompatActivity {
+public class RecipesListActivity extends AppCompatActivity {
 
     private List<Recipe> recipes;
     private ListView list;
-    private MainActivity currentActivity;
+    private RecipesListActivity currentActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        currentActivity = this;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipes_main_list);
+        setContentView(R.layout.activity_recipes_list);
+
 
         // Test fetching recipes
         Retrofit mRetrofit = new Retrofit.Builder()
@@ -53,11 +63,7 @@ public class RecipesMainListActivity extends AppCompatActivity {
 
 
                 list = (ListView)findViewById(R.id.list);
-                Log.i("list", list.toString());
-
-
-                RecipeListAdapter adapter = new RecipeListAdapter(RecipesMainListActivity.this, recipes_list);
-                Log.i("MAinA", RecipesMainListActivity.this.toString());
+                RecipeListAdapter adapter = new RecipeListAdapter(currentActivity, recipes_list);
                 list.setAdapter(adapter);
             }
 
@@ -67,6 +73,7 @@ public class RecipesMainListActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     @Override
@@ -90,4 +97,5 @@ public class RecipesMainListActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

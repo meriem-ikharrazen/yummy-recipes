@@ -1,6 +1,5 @@
-package com.example.yummyrecipes;
+package com.example.yummyrecipes.Model;
 
-import java.util.List;
 
 public class User {
 
