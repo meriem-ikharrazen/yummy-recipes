@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 public class LogInActiviy extends AppCompatActivity {
 
@@ -54,8 +56,14 @@ public class LogInActiviy extends AppCompatActivity {
                         if (userPassword.equals(password.getText().toString())) {
                             Log.i("Success Connection", "Log In");
                             User connectedUser=new User(userEmail,userPassword,fullname);
-                            // Password matches, login successful
-                            // Navigate to next activity or perform any other action
+
+                            //Mettre l'utilisateur connecté dans une session
+                            UserSession.getInstance().addUser(connectedUser);
+
+                            // Navigate to recipes list main to show all recipes
+                            Intent intent = new Intent(LogInActiviy.this, RecipesMainListActivity.class);
+                            startActivity(intent);
+
                         } else {
                             // Password does not match, login failed
                             Log.i("Password ne matche pas", "Log In");
