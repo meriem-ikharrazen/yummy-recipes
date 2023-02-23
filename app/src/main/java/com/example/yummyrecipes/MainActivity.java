@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Uncommit this to access create account
-        /*Intent intent = new Intent(MainActivity.this,CreateAccount.class);
-        MainActivity.this.startActivity(intent);*/
+        Intent intent = new Intent(MainActivity.this,CreateAccount.class);
+        MainActivity.this.startActivity(intent);
 
         //Create new Activity for the rest of code (For all recipes list)
         // Test fetching recipes

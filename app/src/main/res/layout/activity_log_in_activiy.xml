@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yummyrecipes.CreateAccount">
+    tools:context="com.example.yummyrecipes.LogInActiviy">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center"
-    >
+        >
     <EditText
         android:id="@+id/emaiText"
         android:layout_width="match_parent"
@@ -19,14 +19,6 @@
         android:layout_marginVertical="10dp"
         android:hint="Email"
         android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/fullNameText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Full name"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="10dp"        />
 
     <EditText
         android:id="@+id/passwordText"
@@ -38,23 +30,22 @@
         android:layout_marginVertical="10dp"        />
 
     <Button
-        android:id="@+id/buttonCreateAccount"
+        android:id="@+id/buttonLogIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Account"
+        android:text="Log In"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
         android:background="@color/marron"
         />
-
         <Button
-            android:id="@+id/goToLogInActivityButton"
+            android:id="@+id/buttonCreateAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Log In"
+            android:text="Create Account"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="10dp"
-            android:background="@color/marron" />
-
+            android:background="@color/marron"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

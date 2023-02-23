@@ -2,6 +2,7 @@ package com.example.yummyrecipes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         Button btn = findViewById(R.id.buttonCreateAccount);
+        Button goToLogInActivityButton = findViewById(R.id.goToLogInActivityButton);
 
 
         if(btn != null){
@@ -40,5 +42,12 @@ public class CreateAccount extends AppCompatActivity {
             });
         }
 
+        goToLogInActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateAccount.this, LogInActiviy.class);
+                startActivity(intent);
+            }
+        });
     }
 }
